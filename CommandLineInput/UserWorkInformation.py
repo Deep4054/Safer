@@ -5,12 +5,13 @@ class UserWorkInformation :
 # Counstructor of the module
     def __init__(self):
         self.userCurrentRole = ""
-        self.userGoal=[]
+        self.userGoal=set()
 
-    # Work Infromation function
+    # Work information function
     def SetWorkInformation(self):
     
     # When choice matches the loop terminate
+    
      while 1:
         print("\n\t1) Student")
         print("\n\t2) Developer")
@@ -18,7 +19,7 @@ class UserWorkInformation :
         print("\n\t4) Manager")
         choice = int(input("\n\tPlease enter your choice in number: "))
         
-        # constrol statement for user
+        # control statement for user
         if choice == 1 :
             self.userCurrentRole = "Student"
             break
@@ -34,7 +35,7 @@ class UserWorkInformation :
         else :
             print("\n\tPlease Enter valid choice: ")
     
-    #goal information setup mathod
+    #goal information setup method
     def SetGoalInformation(self):
         
         while 1 :

@@ -28,8 +28,10 @@ class UserMainLogic:
         while self.userMailAddress == "":
             self.userMailAddress = input("\n\tInvalid!, Please enter email: ")
 
+    #just for display purpose
+    
     #display function (optional to use)
-    def showDetails(self):
-        print("\n\tUser full name: "+self.userFullName)
-        print("\n\tUser Email address: "+self.userMailAdress)
-        print("\n\tUser local password: "+self.__userLocalPassword)
+    # def showDetails(self):
+    #     print("\n\tUser full name: "+self.userFullName)
+    #     print("\n\tUser Email address: "+self.userMailAdress)
+    #     print("\n\tUser local password: "+self.__userLocalPassword)
