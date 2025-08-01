@@ -36,55 +36,58 @@ class UserFocusTimingSetup :
             print("\n\t 2) Set the sleep timings")
             print("\n\t 3) Set focus timings")
             print("\n\t 4) Edit timings")
+            print("\n\t 5) Exit")
             
-            choice = int(input("\n\tPlease enter your choice: "))
-            match choice :
-                case 1 :
-                    while True :
-                        wakeUpHour = int(input("\n\t Please enter the wakeup timings in hours : "))
-                        wakeUpMin = int(input("\n\t Please enter the wakeup timings in minutes : "))
+            try:
+                choice = int(input("\n\tPlease enter your choice: "))
+                match choice :
+                    case 1 :
+                        while True :
+                            wakeUpHour = int(input("\n\t Please enter the wakeup timings in hours : "))
+                            wakeUpMin = int(input("\n\t Please enter the wakeup timings in minutes : "))
+                        
+                            if(wakeUpHour<=0 or wakeUpMin<=0 or wakeUpMin>59 or wakeUpHour>23 ):
+                                print("\n\tInvalid choice!!!")
+                            else :      
+                                self.setWakeupTime(wakeUpHour, wakeUpMin)
+                                break
+                    case 2 :
+                        while True :
+                            sleepHours = int(input("\n\t Please enter the sleep timings in hours : "))
+                            sleepMin = int(input("\n\t Please enter the sleep timings in minutes : "))
+                            if(sleepHours<=0 or sleepHours > 23 or sleepMin <= 0 or sleepMin >59):
+                                print("\n\tInvalid choice!!!")
+                            else:
+                                self.setSleepTime(sleepHours, sleepMin)
+                                break
+                    case 3 :
+                        while True :
+                            focusStartInHours = int(input("\n\t Please enter the focus start timing in hours : "))
+                            focusStartInMin = int(input("\n\t Please enter the focus start timing in minutes : "))
+                            focusEndHours = int(input("\n\t Please enter the focus end timings in hours : "))
+                            focusEndMin = int(input("\n\t Please enter the focus end timing in minutes : "))
+                            approxFocus = int(input("\n\t Please enter the focus end timing in hours(Approx): "))
+                            if(focusStartInHours <=0 or focusStartInHours > 23 or focusEndMin <= 0 or focusEndMin > 59 or focusStartInMin <=0 
+                            or focusStartInMin > 59 or focusEndHours <= 0 or focusEndHours > 23 or approxFocus <= 0 or approxFocus > 20):
+                                print("\n\tInvalid choice!!!")  
+                            else :
+                                self.setFocusTime(focusStartInHours, focusStartInMin, focusEndHours, focusEndMin, approxFocus)
+                                break
                     
-                        if(wakeUpHour<=0 or wakeUpMin<=0 or wakeUpMin>60 or wakeUpHour>24 ):
-                            print("\n\tInvalid choice!!!")
-                        else :
-                            self.setWakeupTime(wakeUpHour, wakeUpMin)
-                            break
-                case 2 :
-                    while True :
-                        sleepHours = int(input("\n\t Please enter the sleep timings in hours : "))
-                        sleepMin = int(input("\n\t Please enter the sleep timings in minutes : "))
-                        if(sleepHours<=0 or sleepHours > 24 or sleepMin <= 0 or sleepMin >60):
-                            print("\n\tInvalid choice!!!")
-                        else:
-                            self.setSleepTime(sleepHours, sleepMin)
-                            break
-                case 3 :
-                    while True :
-                        focusStartInHours = int(input("\n\t Please enter the focus start timing in hours : "))
-                        focusStartInMin = int(input("\n\t Please enter the focus start timing in minutes : "))
-                        focusEndHours = int(input("\n\t Please enter the focus end timings in hours : "))
-                        focusEndMin = int(input("\n\t Please enter the focus end timing in minutes : "))
-                        approxFocus = int(input("\n\t Please enter the focus end timing in hours(Approx): "))
-                        if(focusStartInHours <=0 or focusStartInHours > 24 or focusEndMin <= 0 or focusEndMin > 60 or focusStartInMin <=0 
-                           or focusStartInMin > 60 or focusEndHours <= 0 or focusEndMin > 60 or approxFocus <= 0 or approxFocus > 60):
-                            print("\n\tInvalid choice!!!")
-                        else :
-                            self.setFocusTime(focusStartInHours, focusStartInMin, focusEndHours, focusEndMin, approxFocus)
-                            break
-                
-                case 4:
-                    print("\n\t Re-edit all those things")
-                    continue
-                
-                case 5:
-                    print("\n\tDone!!")
-                    break
-                
-                case _:
-                    print("Please Enter valid choice!!!")
-                    continue
-                
-#Focus session display
+                    case 4:
+                        print("\n\t Re-edit all those things")
+                        continue
+                    
+                    case 5:
+                        print("\n\tDone!!")
+                        break
+                    
+                    case _:
+                        print("Please Enter valid choice!!!")
+                        continue
+            except:
+                print("\n\tPlease enter only numerical value")
+# Focus session display user display method
 #     def getTimings(self):
 #                 print("\n\tWakeup time: ",self.__userWakeUpTimeInHours," : ", self.__userWakeUpTimeInMinutes)
 #                 print("\n\tSleep time: ",self.__userSleepTimeInHours," : ",self.__userSleepTimeInMinutes)
